@@ -1,20 +1,52 @@
-import Groq from "groq-sdk";
+import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
+
 
 dotenv.config();
 
-const client = new Groq({
-  apiKey: process.env.GROQ_API_KEY, // your Groq API key
-});
+const port=8080;
 
-const response = await client.chat.completions.create({
-  model: "deepseek-r1-distill-llama-70b", // Groq’s Llama model
-  messages: [
-    {
-      role: "user",
-      content: "give the merge sort code in python without comments with steps in detail",
+const app =  express();
+
+app.use(express.json())
+app.use(cors())
+
+
+app.listen(port,()=>{
+  console.log(`Server is listening on port : ${port}`)
+})
+
+app.get("/",(req,res)=>{
+  res.send("hello")
+})
+
+app.get("/test",async (req,res)=>{
+  
+  const options = {
+    method : "POST",
+    headers : {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${process.env.GROQ_API_KEY}`
     },
-  ],
-});
+    body : JSON.stringify({
+      "model": "llama-3.3-70b-versatile",
+      "messages": [{
+      "role": "user",
+      "content": `${req.body.message}`
+  }]
+})
+  }
 
-console.log(response.choices[0].message.content);
+
+  try{
+   const response = await fetch("https://api.groq.com/openai/v1/chat/completions",options)
+   const data = await response.json()
+   console.log(data.choices[0].message.content)
+   res.send(data.choices[0].message.content)
+    
+  }
+  catch(err){
+    console.log(`error while fetching : ${err}`)
+  }
+})
