@@ -34,12 +34,12 @@ router.get("/thread",async (req,res)=>{
 
 })
 
-router.get("thread/:threadId",async(req,res)=>{
+router.get("/thread/:threadId",async(req,res)=>{
     let {threadId} = req.params;
 
     try{
 
-        const thread = await Thread.findById({threadId})
+        const thread = await Thread.findOne({ threadId })
 
         if(!thread){
             res.status(404).json({error :"Thread not found"})
@@ -53,14 +53,14 @@ router.get("thread/:threadId",async(req,res)=>{
 })
 
 
-router.delete("thread/:threadId",async(req,res)=>{
+router.delete("/thread/:threadId",async(req,res)=>{
     let {threadId} = req.params;
 
     try{
 
-        const thread = await Thread.findByIdAndDelete({threadId})
+        const deletedThread = await Thread.findOneAndDelete({threadId});
 
-        if(!thread){
+        if(!deletedThread){
             res.status(404).json({error :"Thread not found"})
         }
 
