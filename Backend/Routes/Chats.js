@@ -75,4 +75,44 @@ router.delete("/thread/:threadId",async(req,res)=>{
 
 
 
+router.post("/chat",async (req,res)=>{
+
+    let{threadId,message} = req.body;
+
+    if(!threadId || !message){
+         return res.status(400).json({error: "missing required fields"});
+    }
+
+    try{
+
+        let thread = await Thread.findOne({threadId})
+
+        if(!thread){
+
+            // creating new thread (chat/conversation)
+            thread = new Thread({
+                threadId,
+                title: message,
+                messages: [{role: "user", content: message}]
+            });
+        }
+       else {
+            thread.messages.push({role: "user", content: message});
+        }
+
+        const assistantReply = await getOpenAIAPIResponse(message);
+
+        thread.messages.push({role: "assistant", content: assistantReply});
+        thread.updatedAt = new Date();
+
+        await thread.save();
+        res.json({reply: assistantReply});
+    }
+    catch(err){
+        console.log(`Error while fetching from api : ${err}`);
+        res.status(500).json({error: "something went wrong white fetching from api"});
+    }
+})
+
+
 export default router;
