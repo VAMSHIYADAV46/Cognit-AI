@@ -1,5 +1,6 @@
 import "../styles/ChatWindow.css"
 import Chat from "./Chat";
+import {SyncLoader} from "react-spinners";
 
 import  MyContext  from "../MyContext.jsx";
 import { useContext, useState, useEffect } from "react";
@@ -10,9 +11,11 @@ import { useContext, useState, useEffect } from "react";
 function ChatWindow(){
 
      const {prompt, setPrompt, reply, setReply, currThreadId, setPrevChats, setNewChat} = useContext(MyContext);
+     const [Loading,setLoading] = useState(false)
 
     const getReply = async () => {
 
+        setLoading(true);
         console.log("message ", prompt, " threadId ", currThreadId);
         const options = {
             method: "POST",
@@ -33,6 +36,7 @@ function ChatWindow(){
         } catch(err) {
             console.log(err);
         }
+        setLoading(false);
     }
 
     
@@ -46,6 +50,7 @@ function ChatWindow(){
             </div>
             
             <Chat></Chat>
+            <SyncLoader loading={Loading} color="white" ></SyncLoader>
             
             <div className="chatInput">
                 <div className="inputBox">
