@@ -1,5 +1,6 @@
 import "../styles/ChatWindow.css"
-import Chat from "../components/Chat.jsx"
+import Chat from "./Chat";
+
 
 
 function ChatWindow(){
@@ -23,6 +24,7 @@ function ChatWindow(){
                     CognitAI can make mistakes. Check important info.
                 </p>
             </div>
+            {/* ChatWindow */}
         </div>
     )
 }
