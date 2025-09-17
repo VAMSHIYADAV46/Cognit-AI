@@ -2,15 +2,15 @@ import "../styles/Sidebar.css"
 
 function Sidebar(){
     return(
-        <section>
+        <section className="sidebar">
 
             <button>
-                <img src="./src//assets/black brain logo.svg"></img>
-                <i class="fa-solid fa-pen-to-square"></i>
+                <img src="./src//assets/black brain logo.svg" className="logo"></img>
+                <span><i className="fa-solid fa-pen-to-square"></i></span>
             </button>
             
 
-            <ul>
+            <ul className="history">
                 <li>sample 1</li>
                 <li>sample 2</li>
                 <li>sample 3</li>

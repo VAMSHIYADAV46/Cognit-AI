@@ -11,8 +11,8 @@ function App() {
     <>
     <div className='app'>
       <MyContext.Provider value={providerValues}>
-        <ChatWindow></ChatWindow>
         <Sidebar></Sidebar>
+        <ChatWindow></ChatWindow>
       </MyContext.Provider>
     </div>
     </>
