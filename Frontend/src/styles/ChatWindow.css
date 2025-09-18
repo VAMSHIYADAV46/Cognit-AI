@@ -93,6 +93,14 @@ input:focus {
     font-size: 0.8rem;
     padding: 0.5rem;
     color: #b4b4b4;
+    
+}
+
+
+.info-link{
+    font-size: 0.8rem;
+    color: #b4b4b4;
+    text-decoration: none;
 }
 
 

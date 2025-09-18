@@ -79,7 +79,7 @@ function ChatWindow(){
                     <div id="submit" onClick={getReply}><i className="fa-solid fa-paper-plane"></i></div>
                 </div>
                 <p className="info">
-                    CognitAI can make mistakes. Check important info.
+                    CognitAI can make mistakes. Check important <a className="info-link" href="https://console.groq.com/docs/models">info <i className="fa-solid fa-arrow-up-right-from-square"></i></a>.
                 </p>
             </div>
             {/* ChatWindow */}
