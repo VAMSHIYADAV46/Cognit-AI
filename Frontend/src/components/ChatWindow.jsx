@@ -1,6 +1,6 @@
 import "../styles/ChatWindow.css"
 import Chat from "./Chat";
-import {SyncLoader} from "react-spinners";
+import {SyncLoader,HashLoader} from "react-spinners";
 
 import  MyContext  from "../MyContext.jsx";
 import { useContext, useState, useEffect } from "react";
@@ -39,6 +39,23 @@ function ChatWindow(){
         setLoading(false);
     }
 
+
+        useEffect(() => {
+        if(prompt && reply) {
+            setPrevChats(prevChats => (
+                [...prevChats, {
+                    role: "user",
+                    content: prompt
+                },{
+                    role: "assistant",
+                    content: reply
+                }]
+            ));
+        }
+
+        setPrompt("");
+    }, [reply]);
+
     
     return(
         <div className="chatWindow">
@@ -49,8 +66,9 @@ function ChatWindow(){
                 </div>
             </div>
             
+            {/* <SyncLoader loading={Loading} color="white" ></SyncLoader> */}
+            <HashLoader loading={Loading} color="white" ></HashLoader>
             <Chat></Chat>
-            <SyncLoader loading={Loading} color="white" ></SyncLoader>
             
             <div className="chatInput">
                 <div className="inputBox">
