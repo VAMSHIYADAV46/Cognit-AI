@@ -34,6 +34,23 @@ function Sidebar(){
     }, [currThreadId])
 
 
+
+    const changeThread = async (newThreadId) => {
+        setCurrThreadId(newThreadId);
+
+        try {
+            const response = await fetch(`http://localhost:8080/api/thread/${newThreadId}`);
+            const res = await response.json();
+            console.log(res);
+            setPrevChats(res);
+            setNewChat(false);
+            setReply(null);
+        } catch(err) {
+            console.log(err);
+        }
+    } 
+
+
     return(
         <section className="sidebar">
 
@@ -46,10 +63,17 @@ function Sidebar(){
             <ul className="history">
                 {
                     allThreads?.map((thread, idx) => (
-                        <li key={idx}>{thread.title}</li>
+                        <li key={idx} 
+                            onClick={(e) => changeThread(thread.threadId)}
+                            className={thread.threadId === currThreadId ? "highlighted": " "}
+                        >
+                            {thread.title}
+             
+                        </li>
                     ))
                 }
             </ul>
+ 
  
 
             <div className="sign in">
