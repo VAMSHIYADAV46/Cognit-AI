@@ -91,10 +91,17 @@ router.post("/chat",async (req,res)=>{
         if(!thread){
 
 
+                                // Limit title length to 50 chars
+            const maxLength = 50;
+            const shortTitle = message.length > maxLength 
+            ? message.substring(0, maxLength) + "..." 
+            : message;
+
+
             // creating new thread (chat/conversation)
             thread = new Thread({
                 threadId,
-                title: message,
+                title: shortTitle,
                 messages: [{role: "user", content: message}]
             });
         }
