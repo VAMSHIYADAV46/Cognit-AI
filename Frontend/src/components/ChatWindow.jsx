@@ -16,6 +16,7 @@ function ChatWindow(){
     const getReply = async () => {
 
         setLoading(true);
+        setNewChat(false);
         console.log("message ", prompt, " threadId ", currThreadId);
         const options = {
             method: "POST",
@@ -60,7 +61,7 @@ function ChatWindow(){
     return(
         <div className="chatWindow">
             <div className="navbar">
-                <span>SigmaGPT <i className="fa-solid fa-chevron-down"></i></span>
+                <span>CognitAI <i className="fa-solid fa-chevron-down"></i></span>
                 <div className="userIconDiv">
                     <span className="userIcon"><i className="fa-solid fa-user"></i></span>
                 </div>
