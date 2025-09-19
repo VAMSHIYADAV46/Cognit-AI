@@ -15,8 +15,8 @@ function ChatWindow(){
 
     const getReply = async () => {
 
-        setLoading(true);
-        setNewChat(false);
+        setLoading(true); // for starting loading
+        setNewChat(false); // for removing of (Let’s Chat! What’s up today?) in new chat after entering prompt
         console.log("message ", prompt, " threadId ", currThreadId);
         const options = {
             method: "POST",
