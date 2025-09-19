@@ -5,9 +5,17 @@
     width: 320px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    overflow: hidden; /* prevent sidebar overflow */
+    scroll-behavior: auto;
+
+    /* Firefox */
+    scrollbar-width: none;   /* hide scrollbar */
 }
 
+/* Chrome, Edge, Safari */
+.sidebar::-webkit-scrollbar {
+    display: none;  /* hide scrollbar */
+}
 
 button {
     display: flex;
@@ -40,7 +48,16 @@ button:hover {
 .history {
     margin: 10px;
     padding: 10px;
-    height: 100%;
+    flex: 1;              /* take remaining space */
+    overflow-y: auto;     /* scroll only inside history */
+}
+
+/* Hide scrollbar inside history */
+.history::-webkit-scrollbar {
+    display: none;
+}
+.history {
+    scrollbar-width: none;
 }
 
 .history li {

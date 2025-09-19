@@ -27,7 +27,7 @@ router.get("/thread",async (req,res)=>{
     try{
         const thread = await Thread.find({}).sort({updatedAt:-1})  // it gives the threads in  decending order (-1 represents dece order)
         res.send(thread)
-        console.log(thread)
+        // console.log(thread)
     }
     catch(err){
         res.status(500).json({error :"Failed to fetch threads"})
@@ -89,6 +89,7 @@ router.post("/chat",async (req,res)=>{
         let thread = await Thread.findOne({threadId})
 
         if(!thread){
+
 
             // creating new thread (chat/conversation)
             thread = new Thread({
