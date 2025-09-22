@@ -2,7 +2,12 @@ import express from "express";
 import Thread from "../Models/Thread.js"
 import getOpenAIAPIResponse from "../utils/openai.js";
 
+
 const router = express.Router()
+
+
+// thread list get route
+
 
 router.post("/test",async (req,res)=>{
     try{
