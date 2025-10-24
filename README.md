@@ -16,7 +16,7 @@
 [![MongoDB](https://img.shields.io/badge/MongoDB-6.0-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 [![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4-412991?style=for-the-badge&logo=openai&logoColor=white)](https://openai.com/)
 
-[**Live Demo**]() • [**Documentation**](https://github.com/VAMSHIYADAV46/CognitAI/wiki) • [**Report Bug**](https://github.com/VAMSHIYADAV46/CognitAI/issues) • [**Request Feature**](https://github.com/VAMSHIYADAV46/CognitAI/issues)
+[**Live Demo**](https://cognitai.onrender.com) • [**Documentation**](https://github.com/VAMSHIYADAV46/CognitAI/wiki) • [**Report Bug**](https://github.com/VAMSHIYADAV46/CognitAI/issues) • [**Request Feature**](https://github.com/VAMSHIYADAV46/CognitAI/issues)
 
 </div>
 
